@@ -29,7 +29,7 @@ public class CarrinhoCompras implements Serializable {									   		//que usam e
 			itensCarrinho.put(carrinhoItem, 0);
 		}		
 		return itensCarrinho.get(carrinhoItem);
-	}
+	} 
 	
 	public Integer getQuantidadeItensNoCarrinho(){
 		return itensCarrinho.values().stream().reduce(0, (proximo, acumulador) -> proximo + acumulador);
