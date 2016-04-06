@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 
 import br.com.casadocodigo.loja.enums.TipoPreco;
 
-@Embeddable
+@Embeddable				// Usado com @ElementCollection para fazer o relacionamento. Não tem representação no banco de dados.
 public class Preco {
 	private BigDecimal valor;
 	private TipoPreco tipo;

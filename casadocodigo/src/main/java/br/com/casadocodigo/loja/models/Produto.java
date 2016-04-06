@@ -29,8 +29,8 @@ public class Produto {
 	@DateTimeFormat
 	private Calendar dataPublicacao;
 	
-	@ElementCollection
-	private List<Preco> precos;
+	@ElementCollection						// @ElementCollection é usado quando não vai ter representação no banco das duas classes, como é o caso do OneToMany.   
+	private List<Preco> precos;				// Nesse caso a classe Preco não existe no banco, ela é anotada como @Embeddable, só a classe Produto existe no banco
 	
 	public Produto(Integer produtoId){
 		this.id = produtoId;
@@ -100,7 +100,7 @@ public class Produto {
 	}
 	
 	public BigDecimal getPrecoPorTipoPreco(TipoPreco tipoPreco){
-		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();		//jdk8
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import br.com.casadocodigo.loja.models.CarrinhoItem;
 import br.com.casadocodigo.loja.models.Produto;
 
 @Controller
-@Scope(value=WebApplicationContext.SCOPE_REQUEST)
+@Scope(value=WebApplicationContext.SCOPE_REQUEST)		// diz ao spring para instanciar um novo objeto dessa classe a cada requisição
 @RequestMapping("/carrinho")
 public class CarrinhoComprasController {
 
@@ -27,13 +27,13 @@ public class CarrinhoComprasController {
 	private CarrinhoCompras carrinhoCompras;
 	
 	@RequestMapping(value="/add")
-	public ModelAndView adicionarNovoProduto(Integer produtoId, TipoPreco tipoPreco){
+	public ModelAndView adicionarNovoItemNoCarrinho(Integer produtoId, TipoPreco tipoPreco){
 		carrinhoCompras.add(getCarrinhoItem(produtoId, tipoPreco));
 		return new ModelAndView("redirect:/carrinho");	
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView itens(){
+	public ModelAndView exibirItensDoCarrinho(){
 		return new ModelAndView("carrinho/itens");
 	}
 	

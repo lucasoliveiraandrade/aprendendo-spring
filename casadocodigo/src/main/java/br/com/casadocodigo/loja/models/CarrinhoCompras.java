@@ -32,7 +32,7 @@ public class CarrinhoCompras implements Serializable {									   		//que usam e
 	} 
 	
 	public Integer getQuantidadeItensNoCarrinho(){
-		return itensCarrinho.values().stream().reduce(0, (proximo, acumulador) -> proximo + acumulador);
+		return itensCarrinho.values().stream().reduce(0, (proximo, acumulador) -> proximo + acumulador);		//jdk8
 	}
 
 	public Collection<CarrinhoItem> getItensCarrinho() {

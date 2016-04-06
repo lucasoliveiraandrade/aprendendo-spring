@@ -29,13 +29,13 @@ public class ProdutosController {
 	@Autowired
 	private FileSaver fileSaver;
 		
-	@InitBinder
+	@InitBinder			// validator do spring
 	public void initBinder(WebDataBinder webDataBinder){
 		webDataBinder.addValidators(new ProdutoValidation());		
 	}
 	
 	@RequestMapping(value="/novo")
-	public ModelAndView mostrarFormDeNovo(Produto produto){
+	public ModelAndView mostrarFormDeNovoCadastro(Produto produto){
 		ModelAndView modelAndView = new ModelAndView(getPageUrl("novo"));
 		modelAndView.addObject("tipos", TipoPreco.values());		
 		return modelAndView;
