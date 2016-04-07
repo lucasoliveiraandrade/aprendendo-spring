@@ -1,5 +1,10 @@
 package br.com.casadocodigo.loja.conf;
 
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,13 +19,16 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.google.common.cache.CacheBuilder;
+
 import br.com.casadocodigo.loja.controller.HomeController;
 import br.com.casadocodigo.loja.daos.ProdutoDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
 import br.com.casadocodigo.loja.models.Produto;
 
-@EnableWebMvc
-@ComponentScan(basePackageClasses={ HomeController.class, ProdutoDAO.class, FileSaver.class, Produto.class })
+@EnableCaching		// ativando o gerenciamento de cache do spring
+@EnableWebMvc		
+@ComponentScan(basePackageClasses={ HomeController.class, ProdutoDAO.class, FileSaver.class, Produto.class })  	// informando o Spring os pacotes de classes da aplicação. Ele pega os pacotes de cada classe, basePackageClasses. 
 public class AppWebConfiguration {
 	
 	// informando o spring onde encontrar as views jsp
@@ -65,5 +73,15 @@ public class AppWebConfiguration {
 	@Bean
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
+	}
+
+	// configuração para uso de cache usando o framework Guava do Google
+	@Bean
+	public CacheManager cacheManager(){
+		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder().maximumSize(100).expireAfterAccess(5, TimeUnit.MINUTES);
+		
+		GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
+		guavaCacheManager.setCacheBuilder(cacheBuilder);
+		return guavaCacheManager;		
 	}
 }
