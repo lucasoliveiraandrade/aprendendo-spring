@@ -20,7 +20,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -31,10 +33,13 @@ import br.com.casadocodigo.loja.daos.ProdutoDAO;
 import br.com.casadocodigo.loja.infra.FileSaver;
 import br.com.casadocodigo.loja.models.Produto;
 
+//a herança da classe WebMvcConfigurerAdapter é devido apenas a configuração do metodo configureDefaultServletHandling
+
 @EnableCaching		// ativando o gerenciamento de cache do spring
 @EnableWebMvc		
 @ComponentScan(basePackageClasses={ HomeController.class, ProdutoDAO.class, FileSaver.class, Produto.class })  	// informando o Spring os pacotes de classes da aplicação. Ele pega os pacotes de cada classe, basePackageClasses. 
-public class AppWebConfiguration {
+public class AppWebConfiguration extends WebMvcConfigurerAdapter {
+							
 	
 	// informando o spring onde encontrar as views jsp
 	@Bean
@@ -102,5 +107,11 @@ public class AppWebConfiguration {
 		resolver.setViewResolvers(viewsResolvers);
 		resolver.setContentNegotiationManager(manager);
 		return resolver;
+	}
+	
+	// configurando o spring para ele não gerenciar as requisições de css, javascript, etc..deixando para o servlet padrão
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 	}
 }
