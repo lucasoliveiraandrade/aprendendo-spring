@@ -93,7 +93,6 @@
 				
 				<button type="submit" class="btn btn-primary"> Cadastrar Novo Livro </button>
 			</form:form>
-		</div>
-				
+		</div>				
 	</body>
 </html>
