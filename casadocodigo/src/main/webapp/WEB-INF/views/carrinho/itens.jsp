@@ -36,7 +36,7 @@
 				<div id="header-content">
 					<nav id="main-nav">
 						<ul class="clearfix">
-							<li><a href="/casadocodigo/carrinho" rel="nofollow">Carrinho (${carrinhoCompras.quantidadeItensNoCarrinho} })</a></li>
+							<li><a href="/casadocodigo/carrinho" rel="nofollow">Carrinho (${carrinhoCompras.quantidadeItensNoCarrinho} )</a></li>
 							<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre Nós</a></li>
 						</ul>
 					</nav>
