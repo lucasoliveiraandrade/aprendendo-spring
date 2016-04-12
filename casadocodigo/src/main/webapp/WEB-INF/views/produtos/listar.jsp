@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Livros sobre Java, Android, iPhone, Ruby e muito mais - Casa do Código</title>
+		<title>Casa do Código</title>
 		
 		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 		<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
@@ -42,9 +42,7 @@
 		</nav>	
 	
 		<div class="container">
-			<div>
-				<h3>${mensagem}</h3>
-			</div>
+			<div><h3>${mensagem}</h3></div>
 			
 			<h1>Listagem de Produtos</h1>
 			
