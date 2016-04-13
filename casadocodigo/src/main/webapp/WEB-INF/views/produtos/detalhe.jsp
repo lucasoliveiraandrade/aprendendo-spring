@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html>
@@ -35,10 +36,9 @@
 			</header>			
 			  
 			<section>  
-				<form action="/casadocodigo/carrinho/add" method="post" class="container">
+				<form:form servletRelativeAction="/casadocodigo/carrinho/add" method="post" cssClass="container">  <!-- form:form servletRelativeAction evita erro de 'invalid csrf token'  -->
 				    <ul id="variants" class="clearfix">
 					    <input type="hidden" value="${produto.id}" name="produtoId">
-					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					    <c:forEach items="${produto.precos}" var="preco">
 					    	  <li class="buy-option">
 					            <input type="radio" name="tipoPreco" class="variant-radio" checked="checked" id="tipo" value="${preco.tipo}" /> 
@@ -49,7 +49,7 @@
 					    </c:forEach>
 				    </ul>
 				    <button type="submit"> Compre Agora ${produto.titulo}!</button>
-				</form>			  
+				</form:form>			  
 			</section>
 			  
 			<div class="container">				  
