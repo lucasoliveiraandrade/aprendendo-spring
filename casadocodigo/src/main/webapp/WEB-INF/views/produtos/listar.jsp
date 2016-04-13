@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>	<!-- taglib de segurança do spring -->
 
 <!DOCTYPE html>
 <html>
@@ -36,6 +37,14 @@
 					<ul class="nav navbar-nav">
 						<li><a href="/casadocodigo/produtos">Lista de Produtos</a></li>
 						<li><a href="/casadocodigo/produtos/novo">Cadastro de Produtos</a></li>					
+					</ul>
+					<ul class="nav navbar-nav navbar-right">		<!-- exibindo o nome do usuario logado -->
+						<li>
+							<a href="#">
+								<security:authentication property="principal" var="usuario"/> 	<!-- principal é a referencia default do spring para o usuario logado -->
+								${usuario.username}
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

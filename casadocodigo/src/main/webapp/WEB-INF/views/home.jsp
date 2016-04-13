@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>	<!-- taglib de segurança do spring -->
 
 <!DOCTYPE html>
 <html>
@@ -18,10 +19,12 @@
 			<div class="clearfix container">
 				<div id="header-content">
 					<nav id="main-nav">						
-						<ul class="clearfix">
-							<li><a href="/casadocodigo/produtos">Lista de Produtos</a></li>
-							<li><a href="/casadocodigo/produtos/novo">Cadastro de Produtos</a></li>
-							<li><a href="/cart" rel="nofollow">Carrinho</a></li>	
+						<ul class="clearfix">									<!-- itens do menu só estarão visiveis se o usuario estiver logado.--> 
+							<security:authorize access="isAuthenticated()">			<!-- Tambem é possível usar  hasRole para saber se o usuario tem a permissão específica-->
+								<li><a href="/casadocodigo/produtos">Lista de Produtos</a></li>
+								<li><a href="/casadocodigo/produtos/novo">Cadastro de Produtos</a></li>
+							</security:authorize>
+							<li><a href="/cart" rel="nofollow">Seu Carrinho</a></li>	
 						</ul>
 					</nav>
 				</div>
