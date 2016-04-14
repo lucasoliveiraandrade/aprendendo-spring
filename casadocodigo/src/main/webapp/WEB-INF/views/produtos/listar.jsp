@@ -45,6 +45,9 @@
 								${usuario.username}
 							</a>
 						</li>
+						<li>
+							<a href="/casadocodigo/logout">Logout</a>
+						</li>
 					</ul>
 				</div>
 			</div>
