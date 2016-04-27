@@ -35,7 +35,7 @@ public class ProdutoDAO {
 	
 	// metodo simulando um relatorio. Usado para teste.
 	public BigDecimal somaPrecosPorTipo(TipoPreco tipoPreco){
-		return entityManager.createQuery("select sum(preco.valor) from Produto p inner join p.Precos preco where preco.tipo = :tipoPreco", BigDecimal.class)
+		return entityManager.createQuery("select sum(preco.valor) from Produto p inner join p.precos preco where preco.tipo = :tipoPreco", BigDecimal.class)
 							.setParameter("tipoPreco", tipoPreco)
 							.getSingleResult();
 	}
