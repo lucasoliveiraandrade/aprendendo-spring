@@ -20,7 +20,7 @@ import br.com.casadocodigo.loja.enums.TipoPreco;
 import br.com.casadocodigo.loja.models.Produto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class })
+@ContextConfiguration(classes={ JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class })	// classes necessarias para a execução desses testes
 @ActiveProfiles("test") 	// ativando o profile de test definido na classe DataSourceConfigurationTest.java pro spring mudar o banco 
 public class ProdutoDAOTest {
 	
