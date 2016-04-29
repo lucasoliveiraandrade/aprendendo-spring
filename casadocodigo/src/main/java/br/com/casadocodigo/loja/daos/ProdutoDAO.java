@@ -29,8 +29,8 @@ public class ProdutoDAO {
 
 	public Produto find(Integer produtoId) {
 		return entityManager.createQuery("select distinct(p) from Produto p join fetch p.precos where p.id = :produtoId", Produto.class)
-				.setParameter("produtoId", produtoId)
-				.getSingleResult();
+							.setParameter("produtoId", produtoId)
+							.getSingleResult();
 	}
 	
 	// metodo simulando um relatorio. Usado para teste.
