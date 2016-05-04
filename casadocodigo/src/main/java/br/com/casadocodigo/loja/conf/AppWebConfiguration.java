@@ -133,7 +133,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		return new CookieLocaleResolver();
 	}	
 	
-	// configurando o enviador e servidor de email 
+	// configurando o servidor e a conta de onde os emails serão enviados 
 	@Bean
 	public MailSender mailSender(){
 		Properties properties = new Properties();  
@@ -147,20 +147,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setUsername("lucas.andrade999@gmail.com");
-		mailSender.setPassword("s1a5c2u4l3dia");
+		mailSender.setPassword(""); 	// colocar senha do gmail
 		mailSender.setJavaMailProperties(properties);
-
 		return mailSender;
 	}
-}
-
-
-
-
-
-
-
-
-
-
-
+}	

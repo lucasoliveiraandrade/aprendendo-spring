@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.casadocodigo.loja.models.CarrinhoCompras;
 import br.com.casadocodigo.loja.models.DadosPagamento;
 import br.com.casadocodigo.loja.models.Usuario;
+import br.com.casadocodigo.loja.util.BundleUtil;
 
 @Controller
 @RequestMapping("/pagamento")
@@ -54,37 +55,22 @@ public class PagamentoController {
 	}
 
 	private void enviaEmailFinalizacaoCompra(Usuario usuario) {
+		if(!Boolean.getBoolean(BundleUtil.get("config.emails.ativo"))){
+			return;
+		}
+		
+		//para que o envio de email será feito é preciso colocar a senha do gmail no WebAppConfiguration.java
+		
+		String emailBody = usuario != null ? "Parabens, " + usuario.getNome() +  "! Sua compra no valor de R$" + carrinhoCompras.getTotal() + " foi efetuada com sucesso!"
+										   : "Parabens! Sua compra foi efetuada com sucesso!";		
+		
 		SimpleMailMessage emailMessage = new SimpleMailMessage();
 		emailMessage.setSubject("Casa Do Codigo - Compra realizada com sucesso");
 //		emailMessage.setTo(usuario.getEmail());
 		emailMessage.setTo("lucas.andrade@gauge.com.br");
-//		emailMessage.setText("Parabens, " + usuario.getNome() +  "! Sua compra no valor de " + carrinhoCompras.getTotal() + " foi efetuada com sucesso!");
-		emailMessage.setText("Parabens, ! Sua compra no valor de foi efetuada com sucesso!");
+		emailMessage.setText(emailBody);
 		emailMessage.setFrom("lucas.andrade999@gmail.com");
 		
 		mailSender.send(emailMessage);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
