@@ -2,6 +2,7 @@ package br.com.casadocodigo.loja.conf;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.cache.CacheManager;
@@ -15,6 +16,8 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -129,4 +132,35 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public LocaleResolver localeResolver(){
 		return new CookieLocaleResolver();
 	}	
+	
+	// configurando o enviador e servidor de email 
+	@Bean
+	public MailSender mailSender(){
+		Properties properties = new Properties();  
+        properties.put("mail.smtp.host", "smtp.gmail.com");  
+        properties.put("mail.smtp.auth", "true");  
+        properties.put("mail.smtp.port", "465");  
+        properties.put("mail.smtp.starttls.enable", "true");  
+        properties.put("mail.smtp.socketFactory.port", "465");  
+        properties.put("mail.smtp.socketFactory.fallback", "false");  
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setUsername("lucas.andrade999@gmail.com");
+		mailSender.setPassword("s1a5c2u4l3dia");
+		mailSender.setJavaMailProperties(properties);
+
+		return mailSender;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

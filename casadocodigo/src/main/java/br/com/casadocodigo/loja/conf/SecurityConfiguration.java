@@ -22,6 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		httpSecurity.authorizeRequests()
 					.antMatchers("/produtos/novo").hasRole("ADMIN")			// internamente ele ja espera que tenha ROLE_ como prefixo, ou seja, no banco tem que estar ROLE_ADMIN
 					.antMatchers("/carrinho/**").permitAll()
+					.antMatchers("/pagamento/**").permitAll()
 					.antMatchers(HttpMethod.POST, "/produtos").hasRole("ADMIN")
 					.antMatchers(HttpMethod.GET, "/produtos").hasRole("ADMIN")
 					.antMatchers("/produtos/**").permitAll()

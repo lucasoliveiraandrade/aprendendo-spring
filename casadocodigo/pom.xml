@@ -170,6 +170,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<version>4.0.4.RELEASE</version>
 			<scope>test</scope>
+		</dependency>		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 	</dependencies>
 

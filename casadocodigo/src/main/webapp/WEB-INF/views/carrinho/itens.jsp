@@ -67,9 +67,9 @@
 			      </tbody>
 			      <tfoot>
 				        <tr>
-				        	<form action="pagamento/finalizar" method="post">
+				        	<form:form servletRelativeAction="pagamento/finalizar" method="post">
 				          	<td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra" /></td>
-				          </form>
+				          </form:form>
 				          
 				          <td class="numeric-cell">${carrinhoCompras.getTotal()}</td>
 				          <td></td>
