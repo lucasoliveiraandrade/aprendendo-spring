@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.casadocodigo.loja.models.CarrinhoCompras;
 import br.com.casadocodigo.loja.models.DadosPagamento;
 import br.com.casadocodigo.loja.models.Usuario;
-import br.com.casadocodigo.loja.util.BundleUtil;
 
 @Controller
 @RequestMapping("/pagamento")
@@ -30,6 +29,8 @@ public class PagamentoController {
 	
 	@Autowired
 	private MailSender mailSender;
+	
+	private final boolean enviaEmail = false; 
 	
 	private final String urlServiroPagamento = "http://book-payment.herokuapp.com/payment";
 	
@@ -55,7 +56,7 @@ public class PagamentoController {
 	}
 
 	private void enviaEmailFinalizacaoCompra(Usuario usuario) {
-		if(!Boolean.getBoolean(BundleUtil.get("config.emails.ativo"))){
+		if(!enviaEmail){
 			return;
 		}
 		
