@@ -73,7 +73,8 @@
 				<tr>
 					<th>	<fmt:message key="produtos.listar.tabela.titulo"/> </th>
 					<th> <fmt:message key="produtos.listar.tabela.descricao"/> </th>
-					<th> <fmt:message key="produtos.listar.tabela.numeroDePaginas"/> </th> 
+					<th> <fmt:message key="produtos.listar.tabela.numeroDePaginas"/> </th>
+					<th> <fmt:message key="produtos.listar.tabela.precos"/> </th> 
 					<th> <fmt:message key="produtos.listar.tabela.dataPublicacao"/></th>
 				</tr>
 				
@@ -82,6 +83,7 @@
 						<td><a href="/casadocodigo/produtos/detalhe/${produto.id}"> ${produto.titulo} </a></td>
 						<td> ${produto.descricao} </td>
 						<td> ${produto.numeroPaginas} </td>
+						<td> ${produto.precos } </td>
 						<td> ${produto.dataPublicacao.getTimeInMillis()}> </td>
 					</tr>
 				</c:forEach>			

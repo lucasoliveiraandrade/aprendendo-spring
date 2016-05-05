@@ -23,8 +23,8 @@ public class ProdutoDAO {
 		entityManager.persist(produto);
 	}
 
-	public List<Produto> listar() {
-		return entityManager.createQuery("select p from Produto p", Produto.class).getResultList();
+	public List<Produto> listar() {												// join fetch - ja tras os preços carregados junto com os produtos - torna desnecessário o fetch eager
+		return entityManager.createQuery("select p from Produto p join fetch p.precos", Produto.class).getResultList();
 	}
 
 	public Produto find(Integer produtoId) {
