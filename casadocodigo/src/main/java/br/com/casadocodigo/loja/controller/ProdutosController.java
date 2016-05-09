@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.controller;
 
+import javax.persistence.NoResultException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,6 +70,20 @@ public class ProdutosController {
 	public ModelAndView mostrarDetalhes(@PathVariable("produtoId") Integer produtoId){
 		ModelAndView modelAndView = new ModelAndView(getPageUrl("detalhe"));
 		modelAndView.addObject("produto", produtoDao.find(produtoId));
+		return modelAndView;
+	}
+	
+	@ExceptionHandler(NoResultException.class) 	// @ExceptionHandler => toda NoResultException lançada nessa controller cai nesse metodo 
+	public ModelAndView handleNoResultException(Exception noResultException){
+		ModelAndView modelAndView = new ModelAndView("error");
+		modelAndView.addObject("exception", noResultException);
+		return modelAndView;
+	}
+	
+	@ExceptionHandler(Exception.class)		// @ExceptionHandler => toda Exception lançada nessa controller cai nesse metodo
+	public ModelAndView handlerException(){
+		ModelAndView modelAndView = new ModelAndView("error");
+		modelAndView.addObject("exception", new Exception("Erro específico do ProdutoController"));
 		return modelAndView;
 	}
 	

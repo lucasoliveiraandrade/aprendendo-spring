@@ -26,6 +26,6 @@ public class Preco {
 	
 	@Override
 	public String toString() {
-		return this.valor + " - " + this.tipo;
+		return "R$" + this.valor + " - " + this.tipo;
 	}	
 }
