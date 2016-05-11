@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import br.com.casadocodigo.loja.conf.AppWebConfiguration;
-import br.com.casadocodigo.loja.conf.JPAConfiguration;
+import br.com.casadocodigo.loja.conf.JPADevelopmentConfiguration;
 import br.com.casadocodigo.loja.conf.SecurityConfiguration;
 import br.com.casadocodigo.loja.config.DataSourceConfigurationTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ AppWebConfiguration.class, JPAConfiguration.class, DataSourceConfigurationTest.class, SecurityConfiguration.class })		// classes necessarias para a execução desses testes
+@ContextConfiguration(classes={ AppWebConfiguration.class, JPADevelopmentConfiguration.class, DataSourceConfigurationTest.class, SecurityConfiguration.class })		// classes necessarias para a execução desses testes
 @ActiveProfiles("test") 	// ativando o profile de test definido na classe DataSourceConfigurationTest.java pro spring mudar o banco
 @WebAppConfiguration	
 public class ProdutosControllerTest {

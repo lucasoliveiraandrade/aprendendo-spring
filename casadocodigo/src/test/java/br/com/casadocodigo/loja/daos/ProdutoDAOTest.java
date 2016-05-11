@@ -14,13 +14,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.casadocodigo.loja.builders.ProdutoBuilder;
-import br.com.casadocodigo.loja.conf.JPAConfiguration;
+import br.com.casadocodigo.loja.conf.JPADevelopmentConfiguration;
 import br.com.casadocodigo.loja.config.DataSourceConfigurationTest;
 import br.com.casadocodigo.loja.enums.TipoPreco;
 import br.com.casadocodigo.loja.models.Produto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class })	// classes necessarias para a execução desses testes
+@ContextConfiguration(classes={ JPADevelopmentConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class })	// classes necessarias para a execução desses testes
 @ActiveProfiles("test") 	// ativando o profile de test definido na classe DataSourceConfigurationTest.java pro spring mudar o banco 
 public class ProdutoDAOTest {
 	

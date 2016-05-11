@@ -15,7 +15,7 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	// informando o spring as classes de configuração que serão carregadas junto com a aplicação no servidor
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { SecurityConfiguration.class, AppWebConfiguration.class, JPAConfiguration.class };
+		return new Class[] { SecurityConfiguration.class, AppWebConfiguration.class, JPADevelopmentConfiguration.class, JPAProductionConfiguration.class };
 	}
 	
 	// informando o spring quais são as classes de configuração da aplicação
@@ -46,10 +46,10 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	}
 	
 	// configurando o profile "dev" como sendo o padrão do servidor da aplicação
-	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException{
-		super.onStartup(servletContext);
-		servletContext.addListener(RequestContextListener.class);		// registrando um listener de contextos do spring
-		servletContext.setInitParameter("spring.profiles.active", "dev");		
-	}
+//	@Override
+//	public void onStartup(ServletContext servletContext) throws ServletException{
+//		super.onStartup(servletContext);
+//		servletContext.addListener(RequestContextListener.class);		// registrando um listener de contextos do spring
+//		servletContext.setInitParameter("spring.profiles.active", "dev");		
+//	}
 }

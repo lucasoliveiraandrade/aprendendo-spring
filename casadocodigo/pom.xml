@@ -123,7 +123,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.7.3</version>
 		</dependency>
-		<dependency>
+		<dependency>	<!-- framework para gerenciamento de cache -->
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>19.0</version>
@@ -176,6 +176,11 @@
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
+		<dependency>	<!-- driver do postgre pra ser usando em produção no Heroku -->
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.4-1201-jdbc41</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -198,6 +203,27 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
+			</plugin>
+			<plugin>		<!-- plugin usado para fazer o deploy no Heroku -->
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>2.3</version>
+			    <executions>
+			        <execution>
+			            <phase>package</phase>
+			            <goals><goal>copy</goal></goals>
+			            <configuration>
+			                <artifactItems>
+			                    <artifactItem>
+			                        <groupId>com.github.jsimone</groupId>
+			                        <artifactId>webapp-runner</artifactId>
+			                        <version>7.0.57.2</version>
+			                        <destFileName>webapp-runner.jar</destFileName>
+			                    </artifactItem>
+			                </artifactItems>
+			            </configuration>
+			        </execution>
+			    </executions>
 			</plugin>
 		</plugins>
 	</build>
