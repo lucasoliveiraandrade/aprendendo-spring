@@ -26,7 +26,7 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 
 	// informando o spring a partir de qual url ele deve gerenciar as requisições 
 	@Override
-	protected String[] getServletMappings() {
+	protected String[] getServletMappings() { 
 		return new String[] {"/"};
 	}
 	
