@@ -55,7 +55,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setExposedContextBeanNames("carrinhoCompras"); //deixando o objeto disponível na JSP
 		return resolver;
-	}
+	} 
 	
 	// informando o spring onde encontrar o arquivo messages.properties
 	@Bean
