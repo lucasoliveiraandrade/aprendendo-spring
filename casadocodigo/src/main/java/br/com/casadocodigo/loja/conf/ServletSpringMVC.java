@@ -46,7 +46,7 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	}
 	
 	// configurando o profile "dev" como sendo o padrão do servidor da aplicação
-//	@Override
+//	@Override 
 //	public void onStartup(ServletContext servletContext) throws ServletException{
 //		super.onStartup(servletContext);
 //		servletContext.addListener(RequestContextListener.class);		// registrando um listener de contextos do spring
