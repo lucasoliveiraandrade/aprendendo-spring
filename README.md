@@ -1,5 +1,5 @@
 # Learning spring
-Project based on Alura Spring MVC I and II curse
+Project based on Alura Spring MVC I and II course
 
 Topics covered:
 - JDK8
